@@ -28,26 +28,30 @@
 
 function firstArrived(cars) {
   // code below here
-  var merah = [];
-  var kuning = [];
-  var hitam = [];
-  
+  var sortCars = [];
+
+  //finding kuning
   for (i=0;i<cars.length;i++){
-    var j = 1;
-    var k = 0;
-    if (cars[i][j] === `merah`){
-      merah.push(cars[i][k]);
-    }
-    else if (cars[i][j] === `hitam`){
-      hitam.push(cars[i][k]);
-    }
-    else{
-      kuning.push(cars[i][k]);
+    if (cars[i][1] === `kuning`){
+      sortCars.push(cars[i][0]);
     }
   }
-  var display = [];
-  display.push(kuning, merah, hitam);
-  return display;
+
+  //finding merah
+  for (i=0;i<cars.length;i++){
+    if (cars[i][1] === `merah`){
+      sortCars.push(cars[i][0]);
+    }
+  }
+
+  //finding hitam
+  for (i=0;i<cars.length;i++){
+    if (cars[i][1] === `hitam`){
+      sortCars.push(cars[i][0]);
+    }
+  }
+
+  return sortCars;
 }
 
 //TEST CASE
