@@ -20,23 +20,32 @@ input:
 output: not found
 RULES:
  - WAJIB MENYERTAKAN ALGORITMA/PSEUDOCODE
- SET "str" to lower case
- SET "partial" to lower case
- SET "counter" to 0
  
- for (i=0; i<LENGTH of str; i++){
-   IF (str[i] + str[i+1] + str[i+2] === partial){
-     SET "counter" EQUAL to "counter" + 1
-   }
- }
+ BEGIN Partial check
 
- IF ("counter" NOT EQUAL 0){
-   DISPLAY "Found (counter) times"
- }
- ELSE{
-   DISPLAY "Not found"
- }
+  SET value inside "str" to lower case
+  SET value inside "partial" to lower case
+  SET "counter" to 0
   
+  FOR (i=0; i<LENGTH of str; i++)
+    SET "temp" to 0
+    FOR (j=0; j<LENGTH of partial;j++)
+      IF (str[i+j] is EQUAL to partial[j])
+        "temp" increment by 1
+      END IF
+    END FOR
+    IF (temp is EQUAL to LENGTH of partial)
+      "counter" increment by 1
+    END IF
+  END FOR
+
+  IF ("counter" NOT EQUAL 0)
+    DISPLAY Found + "counter" + times
+  ELSE
+    DISPLAY "Not found"
+  END IF
+
+END Partial check
 
  - DILARANG MENGGUNAKAN REGEX
 */
@@ -46,8 +55,14 @@ function partialCheck(str, partial) {
   partial = partial.toLowerCase();
   var counter = 0;
 
-  for (i=0,j=1,k=2; k<str.length; i++,j++,k++){
-    if (str[i]+str[j]+str[k] === partial){
+  for (i=0; i<str.length; i++){
+    var temp = 0
+    for (j=0;j<partial.length;j++){
+      if (str[i+j] === partial[j]){
+        temp++;
+      }
+    }
+    if(temp === partial.length){
       counter++;
     }
   }
