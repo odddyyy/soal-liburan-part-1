@@ -46,9 +46,9 @@ function partialCheck(str, partial) {
   partial = partial.toLowerCase();
   var counter = 0;
 
-  for (i=0; i<str.length; i++){
-    if (str[i]+str[i+1]+str[i+2] === partial){
-      counter ++;
+  for (i=0,j=1,k=2; k<str.length; i++,j++,k++){
+    if (str[i]+str[j]+str[k] === partial){
+      counter++;
     }
   }
   
